@@ -4,7 +4,10 @@ homepage: "http://www.zlib.net/"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
 authors: ["Jean-loup Gailly" "Mark Adler"]
 license: "zlib"
-build: ["pkg-config" "zlib"] {os != "macos"}
+build: [
+  ["pkg-config" "zlib"] {os != "openbsd" & os != "win32"}
+  ["pkgconf" "zlib"] {os = "win32" & os-distribution != "msys2"}
+]
 depends: ["conf-pkg-config" {build}]
 depexts: [
   ["zlib-dev"] {os-distribution = "alpine"}
@@ -18,7 +21,7 @@ depexts: [
   ["zlib"] {os-distribution = "homebrew" & os = "macos"}
   ["zlib"] {os-family = "arch"}
   ["zlib"] {os = "win32" & os-distribution = "cygwinports"}
-  ["zlib-devel"] {os = "cygwin"}
+  ["zlib-devel"] {os-distribution = "cygwin"}
 ]
 synopsis: "Virtual package relying on zlib"
 description:

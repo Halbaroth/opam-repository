@@ -10,7 +10,7 @@ bug-reports: "https://github.com/xavierleroy/camlzip/issues"
 dev-repo: "git+https://github.com/xavierleroy/camlzip.git"
 license: "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception"
 build: [
-  [make "all"]
+  [make "ZLIB_LIBDIR=/lib" "ZLIB_INCLUDE=/usr/include" "all"]
 ]
 install: [make "install"]
 depends: [
